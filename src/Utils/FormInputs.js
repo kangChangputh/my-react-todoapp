@@ -6,7 +6,7 @@ import CategoryBtn from "./CategoryBtn";
 import { IoIosCloseCircle } from "react-icons/io";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
-import { max } from "date-fns/fp";
+
 
 const FormInputs = ({
     data,
