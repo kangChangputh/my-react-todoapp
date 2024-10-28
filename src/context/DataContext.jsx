@@ -36,7 +36,6 @@ export const DataProvider = ({ children }) => {
             setAddNotification,
             setEditNotificationTitle,
             setDeleteNotificationTitle,
-            setAddNotification,
             setEditNotification,
             setDeleteNotification,
             index,
@@ -47,4 +46,5 @@ export const DataProvider = ({ children }) => {
         </DataContext.Provider>
     );
 };
+
 export default DataContext;
