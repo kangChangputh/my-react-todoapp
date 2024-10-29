@@ -12,7 +12,7 @@ const FormInputs = ({
     data,
     setData,
     setAddNotification,
-    setAddNotificatoonTitle
+    setAddNotificationTitle
 }) => {
 
     const [taskName, setTaskName] = useState("");
@@ -37,7 +37,7 @@ const FormInputs = ({
         }
     };
     const handleName = (e) => {
-        let title = e.tartget.value;
+        let title = e.target.value;
         setTaskName(e.target.value)
 
         if (title.length > 30) {
@@ -104,18 +104,18 @@ const FormInputs = ({
                 category: selectedCategory
             };
 
-            localStorage.setItem("todoItems", JASON.stringify([...data, newTask]));
+            localStorage.setItem("todoItems", JSON.stringify([...data, newTask]));
             setData([...data, newTask]);
             setTaskName("");
             setTaskDescription("");
             setEmptyInputError(false);
             navigate("/");
 
-            setAddNotificatoonTitle(taskName);
+            setAddNotificationTitle(taskName);
             setAddNotification(true);
             setTimeout(() => {
                 setAddNotification(false);
-                setAddNotificatoonTitle("")
+                setAddNotificationTitle("")
             }, 4000)
         } 
     };
@@ -206,7 +206,7 @@ const FormInputs = ({
 
                     <div
                     onClick={() => setCategoryOpen(!categoryOpen)}
-                    className="bg-white flec gap-7 cursor-pointer justify-between min-h-14 max-sm:minph-12 px-3 py-3 max-sm:px-2 max-sm:py-2 item-center max-sm:text-xs rounded-xl w-full mt-1"
+                    className="bg-white flex gap-7 cursor-pointer justify-between min-h-14 max-sm:minph-12 px-3 py-3 max-sm:px-2 max-sm:py-2 item-center max-sm:text-xs rounded-xl w-full mt-1"
                     >
                         <div className="flex gap-2 flex-wrap items-center">
                             {selectedCategory.map((val, index) => (
@@ -230,7 +230,7 @@ const FormInputs = ({
                     </div>
                     {categoryOpen ? (
                         <div className="mt-3">
-                            <ul className="p-2 bg-purple-400 flex flex-co; gap-2 max-sm:gap-1 rounded-xl">
+                            <ul className="p-2 bg-purple-400 flex flex-col gap-2 max-sm:gap-1 rounded-xl">
                                 <li className="my-2 px-3 text-white max-sm:text-sm">Select max (3 categories)</li>
                                 {category.map((val, index) => (
                                     <CategoryBtn 
@@ -248,6 +248,7 @@ const FormInputs = ({
                 <div className="text-center mt-4">
                     <button
                     disabled={nameCountError || descriptionCountError ? true : false}
+                    onClick={handleSubmit}
                     type="submit"
                     className={`${nameCountError || descriptionCountError
                         ? "bg-purple-700 cursor-not-allowed text-purple-400"

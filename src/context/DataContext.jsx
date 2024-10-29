@@ -1,8 +1,8 @@
 import { createContext, useEffect, useState } from "react";
 
-const DataContext = createContext();
+export const DataContext = createContext();
 
-export const DataProvider = ({ children }) => {
+const DataProvider = ({ children }) => {
     const [edit, setEdit] = useState({});
     const [addNotificationTitle, setAddNotificationTitle] = useState("");
     const [editNotificationTitle, setEditNotificationTitle] = useState("");
@@ -47,4 +47,4 @@ export const DataProvider = ({ children }) => {
     );
 };
 
-export default DataContext;
+export default DataProvider;

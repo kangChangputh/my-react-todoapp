@@ -4,7 +4,7 @@ import { IoIosAddCircle, IoIosCloseCircle } from "react-icons/io";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
 import TopNav from "../Utils/TopNav";
-import DataContext from "../context/DataContext";
+import { DataContext } from "../context/DataContext";
 import EditCategoryBtn from "../Utils/EditCategoryBtn";
 import { category } from "../constants/Data";
 

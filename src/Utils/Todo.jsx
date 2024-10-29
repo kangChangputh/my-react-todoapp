@@ -60,7 +60,7 @@ const Todo = ({
                     </p>
 
                     <div
-                    className={`flex gap-2 items-center flex-wrap mt-3 ${!val.catgory.length && "hidden"}`}
+                    className={`flex gap-2 items-center flex-wrap mt-3 ${!val.category.length && "hidden"}`}
                     >
                         {val.category.map((c, index) => (
                             <h4

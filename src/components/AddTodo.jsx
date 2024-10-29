@@ -1,7 +1,7 @@
 import React, { useContext} from "react";
 import TopNav from "../Utils/TopNav";
 import FormInputs from "../Utils/FormInputs";
-import DataContext from "../context/DataContext";
+import { DataContext } from "../context/DataContext";
 
 const AddTodo = () => {
     const { data, setData, setAddNotification, setAddNotificationTitle } = useContext(DataContext);

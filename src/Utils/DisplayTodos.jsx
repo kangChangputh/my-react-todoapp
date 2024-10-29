@@ -114,7 +114,7 @@ const DisplayTodos = ({
                 </div>
             </div>
         ) : (
-            <h1 className="w-full text-center text-2xl max-md:text-2xl max-sm:text-xl text-white font-bold absolute bottom-[50%] -translate-x-[50%">
+            <h1 className="w-full text-center text-2xl max-md:text-2xl max-sm:text-xl text-white font-bold absolute bottom-[50%] left-[50%] -translate-x-[50%]">
                 You don't have any tasks
             </h1>
         )}
