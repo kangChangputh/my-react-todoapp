@@ -47,11 +47,14 @@ const EditTodo = () => {
             category: edit.category
         });
 
-        if (title.length > 30) {
+        if (!title.length) {
+            setNameCountError("Please enter name");
+        } else if (title.length > 30) {
             setNameCountError("Name should be less than or equal to 30 characters");
         } else {
             setNameCountError("");
         }
+       
     };
 
     const handleEditDescription = (e) => {
@@ -165,7 +168,7 @@ const EditTodo = () => {
                     description: edit.description,
                     check: edit.check,
                     currentTime: edit.currentTime,
-                    category: [...selectdCategory, categoryObj] 
+                    category: [...selectedCategory, categoryObj] 
                 });
             }
         }
@@ -280,13 +283,13 @@ const EditTodo = () => {
 
                                 <button
                                 disabled={
-                                    nameCountError || descriptionCountError || !edit.id
+                                    nameCountError || descriptionCountError || !edit.id || !edit.title
                                     ? true
                                     : false
                                 }
                                 type="submit"
                                 onClick={(e) => handleEditSubmit(e, index)}
-                                className={`${nameCountError || descriptionCountError || !edit.id
+                                className={`${nameCountError || descriptionCountError || !edit.id || !edit.title
                                 ? "bg-purple-700 cursor-not-allowed text-purple-400"
                                 : "hover:bg-purple-800 text-white"
                                 } transition text-xl font-bold bg-purple-400 p-4 max-sm:p-3 max-sm:text-lg rounded-xl w-full`}
