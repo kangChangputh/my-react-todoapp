@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState, useRef} from "react";
 import { useNavigate } from "react-router-dom";
-import { IoIosAddCircle, IoIosCloseCircle } from "react-icons/io";
+import { IoIosCloseCircle } from "react-icons/io";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
 import TopNav from "../Utils/TopNav";
-import { DataContext } from "../context/DataContext";
+import DataContext from "../context/DataContext";
 import EditCategoryBtn from "../Utils/EditCategoryBtn";
 import { category } from "../constants/Data";
 
@@ -17,13 +17,16 @@ const EditTodo = () => {
         setEditNotificationTitle,
         setEditNotification,
         index
-    } = useContext(DataContext)
+    } = useContext(DataContext);
 
     const [emptyInputError, setEmptyInputError] = useState(false);
 
     const [nameCountError, setNameCountError] = useState("");
     const [descriptionCountError, setDescriptionCountError] = useState("");
     const [categoryOpen, setCategoryOpen] = useState(false);
+
+    const [selectedCategory, setSelectedCategory] = useState([]);
+    const [maxSelectedError, setMaxSelectedError]= useState(false)
 
     const navigate = useNavigate("");
 
@@ -55,8 +58,8 @@ const EditTodo = () => {
         let description = e.target.value;
         setEdit({
             id: edit.id,
-            title: title,
-            description: edit.description,
+            title: edit.title,
+            description: description,
             check: edit.check,
             currentTime: edit.currentTime,
             category: edit.category
@@ -125,10 +128,10 @@ const EditTodo = () => {
     }, [edit]);
 
     const handleSelected = (categoryObj) => {
-        const isCategorySelected = selectdCategory.filter((val) => val.id === categoryObj.id);
+        const isCategorySelected = selectedCategory.filter((val) => val.id === categoryObj.id);
 
         if (isCategorySelected.length) {
-            const updatedCategories = selectdCategory.filter((val) => val.id !== categoryObj.id);
+            const updatedCategories = selectedCategory.filter((val) => val.id !== categoryObj.id);
             setSelectedCategory(updatedCategories);
             setEdit({
                 id: edit.id,
@@ -139,7 +142,7 @@ const EditTodo = () => {
                 category: updatedCategories
             });
         } else {
-            if (selecedCategory.length < 3) {
+            if (selectedCategory.length < 3) {
                 setMaxSelectedError(false);
                 setSelectedCategory([...selectedCategory, categoryObj]);
                 setEdit({
@@ -148,7 +151,7 @@ const EditTodo = () => {
                     description: edit.description,
                     check: edit.check,
                     currentTime: edit.currentTime,
-                    category: [...selectdCategory, categoryObj]         
+                    category: [...selectedCategory, categoryObj]         
                 });
             } else {
                 setMaxSelectedError(true);
@@ -186,7 +189,7 @@ const EditTodo = () => {
                                 <input 
                                 type="text"
                                 id="taskName"
-                                value={edit.tile}
+                                value={edit.title}
                                 onChange={handleEditTitle}
                                 onKeyDown={handleKeyDown}
                                 placeholder="Enter task name"
@@ -259,7 +262,7 @@ const EditTodo = () => {
                                                 key={index}
                                                 val={val}
                                                 handleSelected={handleSelected}
-                                                selectdCategory={selecedCategory}
+                                                selectdCategory={selectedCategory}
                                                 />
                                             ))}
                                         </ul>
@@ -297,6 +300,15 @@ const EditTodo = () => {
                             <div className="max-sm:w-[230px] px-3 py-2 rounded-md bg-white border-l-[10px] flex items-center gap-2 border-red-600 absolute bottom-8 left-[50%] -translate-x-[50%]" >
                                 <IoIosCloseCircle className="text-3xl max-sm:text-2xl text-red-500" />{" "}
                                 <h2 className="max-md:text-xs text-sm text-slate-600 font-semibold">
+                                    You cannot add more than 3 categories
+                                </h2>
+                            </div>
+                        )}
+
+                        {maxSelectedError && (
+                            <div className=" max-sm:w-[320px] px-3 py-2 max-sm:px-2 max-sm:py-1 rounded-md bg-white border-l-[10px] flex items-center gap-2 border-red-600 fixed bottom-8 left-[50%] -translate-x-[50%]">
+                                <IoIosCloseCircle className=" text-3xl max-sm:text-2xl text-red-500" />{" "}
+                                <h2>
                                     You cannot add more than 3 categories
                                 </h2>
                             </div>

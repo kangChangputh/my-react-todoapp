@@ -53,6 +53,7 @@ const Todo = ({
                     >
                         {val.currentTime}
                     </p>
+                    </div>
                     <p
                     className={`${val.check ? "line-through" : null} text-base max-sm:text-sm ${!val.description && "hidden"}`}
                     >
@@ -98,7 +99,6 @@ const Todo = ({
                     </div>
                 </div>
             </div>
-        </div>
     );
 };
 

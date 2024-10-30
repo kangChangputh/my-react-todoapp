@@ -32,8 +32,8 @@ const DisplayTodos = ({
     useEffect(() => {
         const filterResults = data.filter(
             (val) => 
-                val.title.toLowerCase().includes(search.toLowerCase()) ||
-            val.description.toLowerCase().includes(search.toLowerCase())
+                val.title ||
+            val.description
         );
         setSearchResults(filterResults)
     }, [data, search]);

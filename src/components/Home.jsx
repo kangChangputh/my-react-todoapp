@@ -4,7 +4,7 @@ import { useNavigate  } from "react-router-dom";
 import { FaCheck } from "react-icons/fa";
 import Greeting from "../Utils/Greeting";
 import DisplayTodos from "../Utils/DisplayTodos";
-import { DataContext } from "../context/DataContext";
+import  DataContext  from "../context/DataContext";
 
 const Home = () => {
     const {

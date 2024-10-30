@@ -5,7 +5,7 @@ import { MdContentCopy, MdDelete } from "react-icons/md";
 import { FaCheck } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-import { DataContext } from "../context/DataContext";
+import  DataContext  from "../context/DataContext";
 
 const TasksOptions = ({
     data,

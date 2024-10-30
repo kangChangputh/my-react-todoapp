@@ -1,8 +1,8 @@
 import { createContext, useEffect, useState } from "react";
 
-export const DataContext = createContext();
+const DataContext = createContext();
 
-const DataProvider = ({ children }) => {
+export const DataProvider = ({ children }) => {
     const [edit, setEdit] = useState({});
     const [addNotificationTitle, setAddNotificationTitle] = useState("");
     const [editNotificationTitle, setEditNotificationTitle] = useState("");
@@ -17,7 +17,7 @@ const DataProvider = ({ children }) => {
     const [index, setIndex] = useState(null);
 
     useEffect(() => {
-        const items =JSON.parse(localStorage.getItem("todoItems"))
+        const items = JSON.parse(localStorage.getItem("todoItems"))
         setData(items || [])
     }, []);
 
@@ -34,6 +34,7 @@ const DataProvider = ({ children }) => {
             editNotification,
             deleteNotification,
             setAddNotification,
+            setAddNotificationTitle,
             setEditNotificationTitle,
             setDeleteNotificationTitle,
             setEditNotification,
@@ -47,4 +48,4 @@ const DataProvider = ({ children }) => {
     );
 };
 
-export default DataProvider;
+export default DataContext;

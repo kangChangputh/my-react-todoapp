@@ -38,7 +38,7 @@ const FormInputs = ({
     };
     const handleName = (e) => {
         let title = e.target.value;
-        setTaskName(e.target.value)
+        setTaskName(e.target.value);
 
         if (title.length > 30) {
             setNameCountError("Name should be less than or equal to 30 characters");
@@ -110,9 +110,9 @@ const FormInputs = ({
             setTaskDescription("");
             setEmptyInputError(false);
             navigate("/");
-
-            setAddNotificationTitle(taskName);
-            setAddNotification(true);
+            
+           setAddNotificationTitle(taskName);
+           setAddNotification(true);
             setTimeout(() => {
                 setAddNotification(false);
                 setAddNotificationTitle("")
@@ -123,7 +123,7 @@ const FormInputs = ({
     const handleSelected = (categoryObj) => {
         setSelectedCategory([...selectedCategory, categoryObj]);
 
-        const isCategorySelected = selectedCategory.filter((val) => val.id !== categoryObj.id);
+        const isCategorySelected = selectedCategory.filter((val) => val.id === categoryObj.id);
 
         if (isCategorySelected.length) {
             const updatedCategories = selectedCategory.filter((val) => val.id !== categoryObj.id);
@@ -248,7 +248,6 @@ const FormInputs = ({
                 <div className="text-center mt-4">
                     <button
                     disabled={nameCountError || descriptionCountError ? true : false}
-                    onClick={handleSubmit}
                     type="submit"
                     className={`${nameCountError || descriptionCountError
                         ? "bg-purple-700 cursor-not-allowed text-purple-400"
